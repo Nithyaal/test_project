@@ -1,0 +1,71 @@
+input:
+  broker:
+    inputs:
+      - label: ainput
+        kafka:
+          addresses: [ localhost:1234 ]
+          topics: [ a, b, c]
+          what_is_this: huh?
+        processors:
+          - bloblang: 'root = this'
+            label: amapper
+          - bloblang: 'root = this'
+            label: bmapper
+      - label: binput
+        nats_jetstream:
+          urls: [ nats://localhost:1234 ]
+          subject: a
+  processors:
+    - bloblang: 'root = this'
+      label: cmapper
+      and_this: isnt known either
+    - bloblang: 'root = this'
+      label: dmapper
+
+nor:
+  is_this: a real field
+
+pipeline:
+  processors:
+    - awk:
+        program: 'BEGIN { print "foo"; }'
+    - archive:
+        format: tar
+    - compress:
+        algorithm: gzip
+
+output:
+  broker:
+    outputs:
+      - amqp_0_9:
+          url: amqp://localhost:1234
+          exchange: benthos-exchange
+          key: benthos-key
+        processors:
+          - bloblang: 'root = this'
+            label: gmapper
+          - bloblang: 'root = this'
+            label: hmapper
+      - nats_jetstream:
+          urls: [ nats://localhost:1234 ]
+          subject: a
+  processors:
+    - bloblang: 'root = this'
+      label: emapper
+    - bloblang: 'root = this'
+      label: fmapper
+
+cache_resources:
+  - label: foocache
+    memory: {}
+
+processor_resources:
+  - label: fooproc
+    branch:
+      processors:
+        - bloblang: 'root = this'
+        - bloblang: 'root = this'
+        - bloblang: 'root = this'
+
+  - label: barproc
+    bloblang: 'root = this'

@@ -1,0 +1,20 @@
+pipeline:
+  processors:
+    - label: first_thing
+      bloblang: |
+        let this_is_fine = "hello world"
+
+        root =
+
+        let also_this = 10
+
+    - label: second_thing
+      bloblang: 'root ='
+
+    - label: third_thing
+      bloblang: |
+        let this_is_fine = "hello world"
+
+        root =
+
+        let also_this = 10

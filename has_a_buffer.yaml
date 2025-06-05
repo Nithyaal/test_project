@@ -1,0 +1,21 @@
+http:
+  enabled: false
+
+input:
+  label: fooinput
+  generate:
+    count: 0
+    interval: 1s
+    mapping: 'root = "hello world"'
+
+buffer:
+  memory: {}
+
+pipeline:
+  processors:
+    - label: fooproc
+      mapping: 'root = content().uppercase()'
+
+output:
+  label: foooutput
+  drop: {}

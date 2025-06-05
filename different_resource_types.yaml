@@ -1,0 +1,17 @@
+pipeline:
+  processors:
+    - label: the_root
+      resource: first_thing
+
+processor_resources:
+  - label: first_thing
+    bloblang: 'root = "meow meow"'
+
+resources:
+  processors:
+    second_thing:
+      bloblang: 'root = "meow meow"'
+
+  caches:
+    third_thing:
+      memory: {}

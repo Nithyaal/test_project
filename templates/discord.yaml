@@ -1,0 +1,15 @@
+name: foo
+type: input
+status: experimental
+categories: [ Services ]
+summary: Consumes messages from foo
+description: This is a benthos template in our session for some reason
+
+fields:
+  - name: foo_id
+    description: A foo id
+    type: string
+
+mapping: |
+  root.generate.interval = "5s"
+  root.generate.mapping = "root = {}"
