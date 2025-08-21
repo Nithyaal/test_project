@@ -49,3 +49,5 @@ pipeline:
         disable_http2: false
         batch_as_multipart: false
         parallel: false
+    - label: ""
+      mapping: root = this.uppercase()
