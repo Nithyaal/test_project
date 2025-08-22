@@ -1,17 +1,8 @@
 pipeline:
   processors:
     - label: ""
-      mapping:
-        additionalProperties: false
-        component: sdasd
-        properties:
-          component:
-            description: ""
-            type: string
-        type: object
-    - label: ""
       http:
-        url: zc
+        url: df
         verb: POST
         metadata:
           include_prefixes: []
@@ -58,3 +49,5 @@ pipeline:
         disable_http2: false
         batch_as_multipart: false
         parallel: false
+    - label: ""
+      mapping: sfsdf
