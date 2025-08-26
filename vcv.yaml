@@ -1,8 +1,12 @@
+input:
+  label: ""
+  stdin:
+    auto_replay_nacks: true
 pipeline:
   processors:
     - label: ""
       http:
-        url: df
+        url: qw
         verb: POST
         metadata:
           include_prefixes: []
@@ -49,5 +53,5 @@ pipeline:
         disable_http2: false
         batch_as_multipart: false
         parallel: false
-    - label: sdasdasdasdasdasdasdasdasdasdasdasddasas
-      mapping: sfsdf
+    - label: ""
+      mapping: this
